@@ -23,6 +23,7 @@ export class AgentBlockHandler implements BlockHandler {
     context: ExecutionContext
   ): Promise<BlockOutput | StreamingExecution> {
     logger.info(`Executing agent block: ${block.id}`)
+    logger.info(`Inputs: ${JSON.stringify(inputs, null, 2)}`)
 
     // Parse response format if provided
     let responseFormat: any = undefined
