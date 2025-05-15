@@ -5,7 +5,6 @@ import { PanelLeftClose, PanelRight, PanelRightClose, Search } from 'lucide-reac
 import { Input } from '@/components/ui/input'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
-import { useSidebarStore } from '@/stores/sidebar/store'
 import { getAllBlocks, getBlocksByCategory } from '@/blocks'
 import { BlockCategory } from '@/blocks/types'
 import { ToolbarBlock } from './components/toolbar-block/toolbar-block'
@@ -15,7 +14,6 @@ export function Toolbar() {
   const [activeTab, setActiveTab] = useState<BlockCategory>('blocks')
   const [searchQuery, setSearchQuery] = useState('')
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const { isCollapsed: isSidebarCollapsed } = useSidebarStore()
 
   const blocks = useMemo(() => {
     const filteredBlocks = !searchQuery.trim() ? getBlocksByCategory(activeTab) : getAllBlocks()
@@ -37,7 +35,7 @@ export function Toolbar() {
         <TooltipTrigger asChild>
           <button
             onClick={() => setIsCollapsed(false)}
-            className={`fixed transition-left duration-200 ${isSidebarCollapsed ? 'left-20' : 'left-64'} bottom-[18px] z-10 flex h-9 w-9 items-center justify-center rounded-lg bg-background text-muted-foreground hover:text-foreground hover:bg-accent border`}
+            className="fixed left-6 bottom-[18px] z-10 flex h-9 w-9 items-center justify-center rounded-lg bg-background text-muted-foreground hover:text-foreground hover:bg-accent border"
           >
             <PanelRight className="h-5 w-5" />
             <span className="sr-only">Open Toolbar</span>
@@ -49,9 +47,7 @@ export function Toolbar() {
   }
 
   return (
-    <div
-      className={`fixed transition-left duration-200 ${isSidebarCollapsed ? 'left-14' : 'left-60'} top-16 z-10 h-[calc(100vh-4rem)] w-60 border-r bg-background sm:block`}
-    >
+    <div className="fixed left-0 top-16 z-10 h-[calc(100vh-4rem)] w-60 border-r bg-background sm:block">
       <div className="flex flex-col h-full">
         <div className="px-4 pt-4 pb-1 sticky top-0 bg-background z-20">
           <div className="relative">

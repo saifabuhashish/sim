@@ -27,6 +27,7 @@ import { getBlock } from '@/blocks'
 import { ControlBar } from './components/control-bar/control-bar'
 import { ErrorBoundary } from './components/error/index'
 import { Panel } from './components/panel/panel'
+import { QuickAddBar } from './components/quick-add/quick-add-bar'
 import { Toolbar } from './components/toolbar/toolbar'
 import { WorkflowBlock } from './components/workflow-block/workflow-block'
 import { WorkflowEdge } from './components/workflow-edge/workflow-edge'
@@ -48,6 +49,7 @@ function WorkflowContent() {
   // State
   const [selectedEdgeId, setSelectedEdgeId] = useState<string | null>(null)
   const [isInitialized, setIsInitialized] = useState(false)
+  // Keep the sidebar state to properly position elements
   const { isCollapsed: isSidebarCollapsed } = useSidebarStore()
 
   // Hooks
@@ -478,13 +480,16 @@ function WorkflowContent() {
     <div className="flex flex-col h-screen w-full overflow-hidden">
       <div className={`transition-all duration-200 ${isSidebarCollapsed ? 'ml-14' : 'ml-60'}`}>
         <ControlBar />
-        <Toolbar />
+        <div className="hidden">
+          <Toolbar />
+        </div>
       </div>
       <div
         className={`flex-1 relative w-full h-full transition-all duration-200 ${isSidebarCollapsed ? 'pl-14' : 'pl-60'}`}
       >
         <Panel />
         <NotificationList />
+        <QuickAddBar />
         <ReactFlow
           nodes={nodes}
           edges={edgesWithSelection}
