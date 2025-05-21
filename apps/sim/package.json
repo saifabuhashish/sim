@@ -103,6 +103,7 @@
     "react-simple-code-editor": "^0.14.1",
     "reactflow": "^11.11.4",
     "resend": "^4.1.2",
+    "fuse.js": "^6.6.2",
     "stripe": "^17.7.0",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",

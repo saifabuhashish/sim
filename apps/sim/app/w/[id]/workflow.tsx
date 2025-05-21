@@ -27,7 +27,7 @@ import { getBlock } from '@/blocks'
 import { ControlBar } from './components/control-bar/control-bar'
 import { ErrorBoundary } from './components/error/index'
 import { Panel } from './components/panel/panel'
-import { Toolbar } from './components/toolbar/toolbar'
+import { AddStepPalette } from './components/add-step-palette'
 import { WorkflowBlock } from './components/workflow-block/workflow-block'
 import { WorkflowEdge } from './components/workflow-edge/workflow-edge'
 import { LoopInput } from './components/workflow-loop/components/loop-input/loop-input'
@@ -481,10 +481,10 @@ function WorkflowContent() {
       <div className={`transition-all duration-200 ${isSidebarCollapsed ? 'ml-14' : 'ml-60'}`}>
         <ControlBar />
       </div>
-      <Toolbar />
       <div
         className={`flex-1 relative w-full h-full transition-all duration-200 ${isSidebarCollapsed ? 'pl-14' : 'pl-60'}`}
       >
+        <AddStepPalette />
         <Panel />
         <NotificationList />
         <ReactFlow
